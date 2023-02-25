@@ -1,16 +1,18 @@
-export const App = () => {
-  return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
-    >
-      React homework template
-    </div>
-  );
-};
+import React from 'react';
+import data from 'Data/data.json';
+import { Section } from './Section/Section';
+import { PizzaList } from './PizzaList/PizzaList';
+
+export class App extends React.Component {
+  state = {
+    pizzas: data,
+  };
+
+  render() {
+    return (
+      <Section title={`Pizza menu`}>
+        <PizzaList pizzas={this.state.pizzas} />
+      </Section>
+    );
+  }
+}
