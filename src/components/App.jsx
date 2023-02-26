@@ -4,7 +4,7 @@ import data from 'Data/data.json';
 import { Section } from './Section/Section';
 import { PizzaList } from './PizzaList/PizzaList';
 import { Modal } from './Modal/Modal';
-
+import { FormikForm } from './Form/Form';
 export class App extends React.Component {
   state = {
     pizzas: data,
@@ -20,7 +20,11 @@ export class App extends React.Component {
   render() {
     return (
       <Section title={`Pizza menu`}>
-        {this.state.isOpen && <Modal onClose={this.togleBtn} />}
+        {this.state.isOpen && (
+          <Modal onClose={this.togleBtn}>
+            <FormikForm />
+          </Modal>
+        )}
         <PizzaList pizzas={this.state.pizzas} modalBtn={this.togleBtn} />
       </Section>
     );
