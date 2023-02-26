@@ -7,11 +7,8 @@ import {
 } from './PizzaItem.styled';
 import React from 'react';
 import img from 'Image/pizza-icon-18.png';
-export class PizzaItem extends React.Component {
-  state = {
-    isOpen: false,
-  };
 
+export class PizzaItem extends React.Component {
   render() {
     const { id, category, name, topping, price, rank } = this.props.pizza;
 
@@ -26,7 +23,9 @@ export class PizzaItem extends React.Component {
             <PizzaDesc>price: {price}</PizzaDesc>
             <PizzaDesc>rank: {rank}</PizzaDesc>
           </Description>
-          <DelivBtn>Order!</DelivBtn>
+          <DelivBtn type="button" onClick={this.props.modalBtn}>
+            Order!
+          </DelivBtn>
         </PizzaItemSt>
       </>
     );

@@ -1,17 +1,27 @@
 import React from 'react';
+
 import data from 'Data/data.json';
 import { Section } from './Section/Section';
 import { PizzaList } from './PizzaList/PizzaList';
+import { Modal } from './Modal/Modal';
 
 export class App extends React.Component {
   state = {
     pizzas: data,
+    isOpen: false,
+  };
+
+  togleBtn = () => {
+    this.setState(({ isOpen }) => ({
+      isOpen: !isOpen,
+    }));
   };
 
   render() {
     return (
       <Section title={`Pizza menu`}>
-        <PizzaList pizzas={this.state.pizzas} />
+        {this.state.isOpen && <Modal onClose={this.togleBtn} />}
+        <PizzaList pizzas={this.state.pizzas} modalBtn={this.togleBtn} />
       </Section>
     );
   }
